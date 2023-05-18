@@ -1,36 +1,39 @@
+with arbol;
+   
 generic
    
-   type Tipoelemento is private; -- Tipo de dato registro
-      
-package medico is
-      
-      type Tipolista is private;
-      
-      function Vacia (Lista: Tipolista) return Boolean;
-      
-      procedure Limpiar (Lista: in out Tipolista);
-      
-      function Info (Lista: Tipolista) return Tipoelemento;
-      function Sig (Lista: Tipolista) return Tipolista;
-      
-      procedure Agregar_Registro (Lista: in out Tipolista; Registro: in Tipoelemento);
-      procedure Eliminar_registro (Lista: in out Tipolista; Registro: Tipoelemento);
-      
-      function Buscar_datos_Registro (Lista: Tipolista; Registro: Tipoelemento) return Tipoelemento;
-      
-      Listavacia: exception;
-      
+   package Medico is
+   
+   type Emedico is private;
+   type Tmedico is private;
+   
+   MEDICO_YA_EXISTE,NO_EXISTE_LISTADO_MEDICO,Data_Error: exception;
+   
+     procedure Ingresar_Medico (Arbol: in out Tmedico);
+     procedure Eliminar_medico (Arbol: in  out Tmedico);  
+     procedure Existe_Medico (Arbol: in out Tmedico);
+     procedure Guardar_Archivo(X: in out Tmedico);
+     procedure abrir_archivo(x: out Tmedico); 
       private
          
-         
-      type Tiponodo;
-      type Tipolista is access Tiponodo;
-      
-      type Tiponodo is record
-         Info: Tipoelemento;
-         Sig: Tipolista;
+     type Emedico is record
+        Dni: Integer;
+        Nombre: string(1..40);
+        Apellido: string(1..40);
+        Longn: Integer;
+        Longa: Integer;
+        Especialidad: string(1..40);
+       Longe: Integer;
       end record;
-   
-   
-   end Medico;
-  
+
+   -- Paquete Arbol ordenada
+    function Menor(X, Y: Emedico) return Boolean;
+    function Mayor(X, Y: Emedico) return Boolean;
+    function Igual(X, Y: Emedico) return Boolean;
+    
+    package arbolinc is new arbol(Emedico,menor,mayor,igual);
+    use arbolinc;
+ 
+    type Tmedico is new TArbol;
+    
+ end Medico;
