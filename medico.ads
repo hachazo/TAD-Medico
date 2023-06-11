@@ -1,7 +1,5 @@
 with arbol;
    
-generic
-   
    package Medico is
    
    type Emedico is private;
@@ -13,7 +11,8 @@ generic
      procedure Eliminar_medico (Arbol: in  out Tmedico);  
      procedure Existe_Medico (Arbol: in out Tmedico);
      procedure Guardar_Archivo(X: in out Tmedico);
-     procedure abrir_archivo(x: out Tmedico); 
+     procedure Abrir_Archivo(X: out Tmedico); 
+     procedure medico_esta(Elemento: in integer; resultado: out boolean); 
       private
          
      type Emedico is record

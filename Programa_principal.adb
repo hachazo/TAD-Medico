@@ -1,4 +1,5 @@
-with Ada.Text_IO,ada.Integer_Text_IO,menu; use ada.Text_IO,menu,ada.Integer_Text_IO;
+with Ada.Text_Io,Ada.Integer_Text_Io,Menu,medico,nt_console;--, menu_os, menu_pacien, menu_turnos; 
+use ada.Text_IO,menu,ada.Integer_Text_IO,nt_console;
 
 procedure Programa_principal is
 
@@ -6,7 +7,7 @@ procedure Programa_principal is
    
 begin
    
-   while Option/=5 loop
+   while Option/=6 loop
       
    Put(".___________________________________________________________________________________.");New_Line;
    Put("|                                                                                   |");New_Line; 
@@ -25,9 +26,10 @@ begin
    new_line;
    Put_Line("1. Gestionar medicos.");
    Put_Line("2. Gestionar pacientes.");
-   Put_Line("3. Informes.");
-   Put_Line("4. Turnos");
-   Put_Line("5. Salir del programa.");
+   Put_Line("3. Gestionar obras sociales.");
+   Put_Line("4. Informes.");
+   Put_Line("5. Turnos");   
+   Put_Line("6. Salir del programa.");
    New_line;
    
    Put("Ingrese su opcion: ");
@@ -37,14 +39,19 @@ begin
    
    case Option is
          when 1 => 
-            menu.medicos_menu;
+            Menu.Medicos_Menu;
+            clear_screen;
          when 2 => 
-            null; 
+           -- menu_pacien.pacientes_menu; 
+           null;
          when 3 =>
-            null;
+           -- Menu_Os.obrasocial_menu;           null;
          when 4 =>
             null;
          when 5 =>
+           --  Menu_Turnos.Turnos_Pacientes_Medicos;
+           null;
+         when 6 =>
             Put_Line(" ");
          when others => 
             Put_Line("Opcion invalida");

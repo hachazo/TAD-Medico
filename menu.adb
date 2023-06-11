@@ -1,13 +1,10 @@
 with Ada.Text_Io, Ada.Integer_Text_Io,medico; 
-use Ada.Text_Io, Ada.Integer_Text_Io;
+use Ada.Text_Io, Ada.Integer_Text_Io,medico;
 
 package body menu is
 
-procedure medicos_menu is
-
-   -- Paquete medico
-   package medicoinc is new medico;
-   use Medicoinc;
+   procedure Medicos_Menu is
+      
    Arbol:Tmedico;
    
 begin
